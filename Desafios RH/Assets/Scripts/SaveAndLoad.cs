@@ -8,7 +8,6 @@ using UnityEngine.UI;
 
 public class SaveAndLoad : MonoBehaviour
 {
-    Empresas empresa;
     protected string Name;
     public int Contratados;
 

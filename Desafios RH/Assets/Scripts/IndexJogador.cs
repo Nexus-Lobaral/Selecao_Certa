@@ -7,8 +7,10 @@ public class IndexJogador : MonoBehaviour
 {
     // Start is called before the first frame update
     private GuacamolJuegos guacamol;
+    private SaveAndLoad save;
    void Start()
     {
+        save = new SaveAndLoad();
         // Crio um Objeto da unity, e atribuo um nome a ele
         GameObject guacamolGameObject = new GameObject("GuacamolJuegos");
         // Atribuo o Objeto adicionando a classe a ele na variavel de referencia Guacamol
@@ -36,7 +38,7 @@ public class IndexJogador : MonoBehaviour
                 string a = guacamol.GetName();
                 int b = guacamol.GetContratados();
 
-                SaveAndLoad.SaveToJson(guacamol.GetName(), guacamol.GetContratados());
+                save.SaveToJson(guacamol.GetName(), guacamol.GetContratados());
             }
         }
     }
