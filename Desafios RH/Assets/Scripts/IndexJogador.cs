@@ -5,23 +5,26 @@ using UnityEngine;
 
 public class IndexJogador : MonoBehaviour
 {
-    // Start is called before the first frame update
     private GuacamolJuegos guacamol;
     private SaveAndLoad save;
-   void Start()
+
+    void Start()
     {
-        save = new SaveAndLoad();
+        /* se for fazer as classes voltar a ser monoBehaviour, tornar codigo denovo
         // Crio um Objeto da unity, e atribuo um nome a ele
         GameObject guacamolGameObject = new GameObject("GuacamolJuegos");
+        GameObject saveGameObject = new GameObject("SaveAndLoad");
         // Atribuo o Objeto adicionando a classe a ele na variavel de referencia Guacamol
         guacamol = guacamolGameObject.AddComponent<GuacamolJuegos>();
-        Debug.Log("Teste");
-        string a = guacamol.GetName();
-        int b = guacamol.GetContratados();
+        save = saveGameObject.AddComponent<SaveAndLoad>();
+        */
+        guacamol = new GuacamolJuegos();
+        save = new SaveAndLoad(guacamol);
+
+        Debug.Log("Incio");
         
     }
 
-    // Update is called once per frame
     void Update()
     {
         // Testezinho
@@ -33,13 +36,27 @@ public class IndexJogador : MonoBehaviour
                 Debug.Log(guacamol.DefinirCargo());
             }
 
-            if (Input.GetKeyUp(KeyCode.A))
+            if (Input.GetKeyUp(KeyCode.S))
             {
-                string a = guacamol.GetName();
-                int b = guacamol.GetContratados();
-
-                save.SaveToJson(guacamol.GetName(), guacamol.GetContratados());
+                save.SaveToJson();
+            }
+            if (Input.GetKeyUp(KeyCode.L))
+            {
+                save.LoadFromJson();
+            }
+            if (Input.GetKeyUp(KeyCode.C))
+            {
+                guacamol.SetContratados(guacamol.GetContratados() + 1);
+            }
+            if (Input.GetKeyUp(KeyCode.V))
+            {
+                Debug.Log(guacamol.GetContratados());
             }
         }
+        
     }
+    
+
+
+
 }

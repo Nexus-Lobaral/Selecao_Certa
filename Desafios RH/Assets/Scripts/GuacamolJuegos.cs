@@ -12,6 +12,7 @@ public class GuacamolJuegos : Empresas // Empresa de jogos que herda da classe d
     public GuacamolJuegos() 
     {
         listaCargos = new List<string> { "GameDev", "Produtor Executivo", "Designer" }; // Lista de cargos especifico desta empresa
+        contratados = 0;
     }
 
     // Metodos
@@ -29,16 +30,12 @@ public class GuacamolJuegos : Empresas // Empresa de jogos que herda da classe d
         return cargo;
 
     }
-    public override string GetName(){
-        return nome;
-    }
-    public override int GetContratados(){
+    public override int GetContratados()
+    {
         return contratados;
     }
-    public void setEmpresa(string nome){
-        this.nome = nome;
-    }
-    public void setContratado(int contratados){
+    public override void SetContratados(int contratados)
+    {
         this.contratados = contratados;
     }
 
