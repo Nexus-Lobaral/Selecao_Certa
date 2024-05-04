@@ -7,6 +7,7 @@ public class IndexJogador : MonoBehaviour
 {
     private GuacamolJuegos guacamol;
     private SaveAndLoad save;
+    private Curriculo curriculo;
 
     void Start()
     {
@@ -20,29 +21,25 @@ public class IndexJogador : MonoBehaviour
         */
         guacamol = new GuacamolJuegos();
         save = new SaveAndLoad(guacamol);
-
+        curriculo = new Curriculo(guacamol);
         Debug.Log("Incio");
         
     }
 
     void Update()
     {
-        // Testezinho
+        
+
+    }
+
+    public void Testes()
+    {
         if (guacamol != null)
         {
-            // Testezinho
+            // Teste de teclas
             if (Input.GetKeyUp(KeyCode.Space))
             {
-                Debug.Log(guacamol.DefinirCargo());
-            }
-
-            if (Input.GetKeyUp(KeyCode.S))
-            {
-                save.SaveToJson();
-            }
-            if (Input.GetKeyUp(KeyCode.L))
-            {
-                save.LoadFromJson();
+                Debug.Log(guacamol.GetCargo());
             }
             if (Input.GetKeyUp(KeyCode.C))
             {
@@ -53,10 +50,19 @@ public class IndexJogador : MonoBehaviour
                 Debug.Log(guacamol.GetContratados());
             }
         }
-        
+
+            if (Input.GetKeyUp(KeyCode.S))
+            {
+                save.SaveToJson();
+            }
+            if (Input.GetKeyUp(KeyCode.L))
+            {
+                save.LoadFromJson();
+            }
+            if (Input.GetKey(KeyCode.C))
+            {
+                Debug.Log(curriculo.GetNomePessoa());
+            }
     }
-    
-
-
 
 }

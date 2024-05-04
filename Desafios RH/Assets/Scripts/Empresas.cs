@@ -13,7 +13,9 @@ public abstract class Empresas
     public int contratados;
 
     //Metodos
-    public abstract string DefinirCargo(); // todas empresas terao um metodo de definir cargo
+    public abstract string GetDescricao();
+    public abstract List<string> GetListaCargos();
+    public abstract string GetCargo();
     public abstract int GetContratados();
     public abstract void SetContratados(int contratados);
 

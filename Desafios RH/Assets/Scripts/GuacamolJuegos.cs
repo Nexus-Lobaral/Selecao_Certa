@@ -5,7 +5,8 @@ using UnityEngine;
 public class GuacamolJuegos : Empresas // Empresa de jogos que herda da classe de empresa
 {
     // Atributos
-    protected string descricao; // Descri��o da empresa que aparecer� no card quando for selecionar a empresa
+    protected string nome = "Guacamol Juegos";
+    protected string descricao; // Descricao da empresa que aparecera no card quando for selecionar a empresa
     
     
     // Construtores
@@ -16,15 +17,15 @@ public class GuacamolJuegos : Empresas // Empresa de jogos que herda da classe d
     }
 
     // Metodos
-    public string MostrarDescricao() // Metodo para retornar a variavel de descri��o
+    public override string GetDescricao() // Metodo para retornar a variavel de descri��o
     {
         return descricao;
     }
-    public List<string> MostrarListaCargos() // // Metodo para retornar Lista de cargos
+    public override List<string> GetListaCargos() // // Metodo para retornar Lista de cargos
     {
         return listaCargos;
     }
-    public override string DefinirCargo() // Ao chamar este metodo, ele escolhera um dos 3 cargos e retorna o nome cargo
+    public override string GetCargo() // Ao chamar este metodo, ele escolhera um dos 3 cargos e retorna o nome cargo
     {
         cargo = listaCargos[Random.Range(0, listaCargos.Count)];
         return cargo;
