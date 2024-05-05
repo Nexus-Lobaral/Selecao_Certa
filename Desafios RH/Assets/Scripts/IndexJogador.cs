@@ -28,8 +28,8 @@ public class IndexJogador : MonoBehaviour
 
     void Update()
     {
-        
 
+        Testes();
     }
 
     public void Testes()
@@ -59,7 +59,7 @@ public class IndexJogador : MonoBehaviour
             {
                 save.LoadFromJson();
             }
-            if (Input.GetKey(KeyCode.C))
+            if (Input.GetKeyUp(KeyCode.C))
             {
                 Debug.Log(curriculo.GetNomePessoa());
             }
