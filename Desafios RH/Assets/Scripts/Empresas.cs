@@ -11,6 +11,8 @@ public abstract class Empresas
     protected List<string> listaCargos =  new List<string>(3);
     protected string cargo;
     public int contratados;
+    protected string nome;
+    protected string descricao; // Descricao da empresa que aparecera no card quando for selecionar a empresa
 
     //Metodos
     public abstract string GetDescricao();

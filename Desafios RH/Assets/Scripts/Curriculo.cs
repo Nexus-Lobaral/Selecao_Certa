@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 
 public class Curriculo
@@ -7,15 +8,14 @@ public class Curriculo
     // Atributos
     protected Empresas empresa;
     protected string cargo;
-    private List<string> listaPessoas = new List<string>() { "Joao", "Maria", "Enzo", "Marcelo" }; // Gerar nome de pessoa aleatoriamente pelo ChatGpt (se for dificil demais, deixa para depois do prototipo)
-    protected string nomePessoa;
     protected string detalhes; // detalhe variados, como onde cursou e etc...
+    protected Pessoa pessoa;
     
 
     // Construtor
-    public Curriculo(Empresas empresaPertence) // Construo um curriculo, precisando de uma empresa de referencia para pegar os dados
+    public Curriculo(Empresas empresaPertence, Pessoa pessoa) // Construo um curriculo, precisando de uma empresa de referencia para pegar os dados
     {
-        nomePessoa = listaPessoas[Random.Range(0, listaPessoas.Count)]; // Definindo o nome da pessoa aleatoriamente
+        this.pessoa = pessoa;
         detalhes = ""; // Colocar tipos de detalhes da pessoa gerados aleatoriamente
         empresa = empresaPertence;
         cargo = empresa.GetCargo(); // Nome do cargo
@@ -26,7 +26,7 @@ public class Curriculo
     // Metodos
     public string GetNomePessoa()
     {
-        return nomePessoa;
+        return pessoa.GetNome();
     }
     public string GetCargo()
     {

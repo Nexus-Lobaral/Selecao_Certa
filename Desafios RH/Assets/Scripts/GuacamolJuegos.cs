@@ -5,15 +5,17 @@ using UnityEngine;
 public class GuacamolJuegos : Empresas // Empresa de jogos que herda da classe de empresa
 {
     // Atributos
-    protected string nome = "Guacamol Juegos";
-    protected string descricao; // Descricao da empresa que aparecera no card quando for selecionar a empresa
+    
+    
     
     
     // Construtores
     public GuacamolJuegos() 
     {
+        nome = "Guacamol Juegos";
         listaCargos = new List<string> { "GameDev", "Produtor Executivo", "Designer" }; // Lista de cargos especifico desta empresa
         contratados = 0;
+        descricao = ""; // Descrição da empresa para aparecer no card
     }
 
     // Metodos

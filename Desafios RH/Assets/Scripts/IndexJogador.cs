@@ -8,7 +8,7 @@ public class IndexJogador : MonoBehaviour
     private GuacamolJuegos guacamol;
     private SaveAndLoad save;
     private Curriculo curriculo;
-
+    private Pessoa pessoa;
     void Start()
     {
         /* se for fazer as classes voltar a ser monoBehaviour, tornar codigo denovo
@@ -19,9 +19,10 @@ public class IndexJogador : MonoBehaviour
         guacamol = guacamolGameObject.AddComponent<GuacamolJuegos>();
         save = saveGameObject.AddComponent<SaveAndLoad>();
         */
+        pessoa = new Pessoa();
         guacamol = new GuacamolJuegos();
         save = new SaveAndLoad(guacamol);
-        curriculo = new Curriculo(guacamol);
+        curriculo = new Curriculo(guacamol, pessoa);
         Debug.Log("Incio");
         
     }
@@ -58,10 +59,6 @@ public class IndexJogador : MonoBehaviour
             if (Input.GetKeyUp(KeyCode.L))
             {
                 save.LoadFromJson();
-            }
-            if (Input.GetKeyUp(KeyCode.C))
-            {
-                Debug.Log(curriculo.GetNomePessoa());
             }
     }
 
