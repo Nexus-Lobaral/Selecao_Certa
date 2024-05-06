@@ -9,7 +9,6 @@ public class Jogador
     protected int status; // total de pontos acumulados, se contratou certo ou não
     protected List<Pessoa> pessoas = new List<Pessoa>();
     protected List<Curriculo> curriculos = new List<Curriculo>();
-    Rigidbody2D rb;
 
     // Construtor
     public Jogador()
