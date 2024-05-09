@@ -2,9 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
-
+using Unity.VisualScripting;
 public class Curriculo
-{
+{   
     // Atributos
     protected Empresas empresa;
     protected string cargo;
