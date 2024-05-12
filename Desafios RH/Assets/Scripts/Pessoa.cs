@@ -25,6 +25,7 @@ public class Pessoa
     {
         // ...
     }
+    
     public string GetNome()
     {
         return nome;
