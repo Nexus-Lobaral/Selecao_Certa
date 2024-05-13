@@ -5,8 +5,11 @@ using UnityEngine.SceneManagement;
 
 public class PauseScript : MonoBehaviour
 {
-    [SerializeField] private string PauseCena;
-    [SerializeField] private string GameCena;
+    [SerializeField] private GameObject gameCena;
+    [SerializeField] private GameObject pauseCena;
+
+    // [SerializeField] private string PauseCena;
+    // [SerializeField] private string GameCena;
 
     // Update is called once per frame
     void Update()
@@ -14,7 +17,7 @@ public class PauseScript : MonoBehaviour
 
             if (Input.GetKeyUp(KeyCode.Escape))
             {
-                if (SceneManager.GetActiveScene().name == GameCena)
+                if (gameCena.activeSelf)
                 {
                     Debug.Log("Pausado");
                     Pause();
@@ -28,16 +31,18 @@ public class PauseScript : MonoBehaviour
 
     }
     public void Pause(){
-        SceneManager.LoadScene(PauseCena);
+        // SceneManager.LoadScene(PauseCena);
         Time.timeScale = 0; // oq isso faz? e praq?
         Debug.Log("Menu Pausado");
-        // Game.SetActive(false);
+        gameCena.SetActive(false);
+        pauseCena.SetActive(true);
     }
     public void Continue(){
-        SceneManager.LoadScene(GameCena);
+        // SceneManager.LoadScene(GameCena);
         Time.timeScale = 1; // ...
         Debug.Log("Menu Despausado");
-        // Game.SetActive(true);
+        gameCena.SetActive(true);
+        pauseCena.SetActive(false);
     }
     public void SairJogo()
     {
