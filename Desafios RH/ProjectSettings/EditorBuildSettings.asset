@@ -12,10 +12,7 @@ EditorBuildSettings:
     path: Assets/Scenes/SelecaoCurriculos.unity
     guid: 16c7382cc6f406f4a91037aa6c19cff9
   - enabled: 1
-    path: Assets/Scenes/Game.unity
-    guid: e7ed245b00d73bb4c88f9b45e74f8529
-  - enabled: 1
-    path: Assets/Scenes/Pause.unity
-    guid: bd4aefd718642824ba988a5309b90d43
+    path: Assets/Scenes/Entrevista.unity
+    guid: 0c4cf99f0defe314f920f86e540d0780
   m_configObjects:
     com.unity.addressableassets: {fileID: 11400000, guid: abbbfb3c0e385294596a5e52258bdba7, type: 2}

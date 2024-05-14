@@ -27,7 +27,7 @@ public class SistemaDeSeleção : MonoBehaviour
         if (obj != null)
         {
             text = obj.GetComponent<TextMeshProUGUI>();
-            text.SetText(texto);
+            text.text = texto;
         }
         else
         {
