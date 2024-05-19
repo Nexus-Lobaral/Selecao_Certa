@@ -58,7 +58,7 @@ public class Dialog : MonoBehaviour
         {
             index++;
             textComp.text = string.Empty;
-            StartCoroutine (TypeLine());
+            StartCoroutine(TypeLine());
         }
         else
         {

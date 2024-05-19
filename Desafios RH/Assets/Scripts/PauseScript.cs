@@ -7,38 +7,31 @@ public class PauseScript : MonoBehaviour
 {
     [SerializeField] private GameObject gameCena;
     [SerializeField] private GameObject pauseCena;
+    [SerializeField] private string nextCena;
 
-    // [SerializeField] private string PauseCena;
-    // [SerializeField] private string GameCena;
 
     // Update is called once per frame
     void Update()
     {
-
-            if (Input.GetKeyUp(KeyCode.Escape))
+        if (Input.GetKeyUp(KeyCode.Escape) && gameCena != null)
+        {
+            if (gameCena.activeSelf)
             {
-                if (gameCena.activeSelf)
-                {
-                    Debug.Log("Pausado");
-                    Pause();
-                }
-                else 
-                {
-                    Debug.Log("Despausar");
-                    Continue();
-                }
+                Pause();
             }
-
+            else
+            {
+                Continue();
+            }
+        }
     }
     public void Pause(){
-        // SceneManager.LoadScene(PauseCena);
         Time.timeScale = 0; // oq isso faz? e praq?
         Debug.Log("Menu Pausado");
         gameCena.SetActive(false);
         pauseCena.SetActive(true);
     }
     public void Continue(){
-        // SceneManager.LoadScene(GameCena);
         Time.timeScale = 1; // ...
         Debug.Log("Menu Despausado");
         gameCena.SetActive(true);
@@ -48,5 +41,9 @@ public class PauseScript : MonoBehaviour
     {
         Debug.Log("Saiu do Jogo");
         Application.Quit();
+    }
+    public void Next()
+    {
+        SceneManager.LoadScene(nextCena);
     }
 }
