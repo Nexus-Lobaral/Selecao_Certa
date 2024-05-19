@@ -4,10 +4,16 @@ using UnityEngine;
 using Newtonsoft.Json;
 using UnityEngine.AddressableAssets;
 using UnityEngine.ResourceManagement.AsyncOperations;
+using System.Net.Http.Headers;
+using UnityEditor.Build.Pipeline;
+using System.Reflection;
+using Unity.Properties;
 
 public class Curriculo : MonoBehaviour
 {   
     // Atributos
+    private System.Random random = new System.Random();
+    private int numRandom;
     protected Empresas empresa;
     protected string cargo;
     protected string detalhes; // detalhes variados, como onde cursou e etc...
@@ -18,6 +24,7 @@ public class Curriculo : MonoBehaviour
     // Construtor
     public Curriculo(Empresas empresaPertence, Pessoa pessoa)
     {
+        
         this.pessoa = pessoa;
         detalhes = ""; // Colocar tipos de detalhes da pessoa gerados aleatoriamente
         empresa = empresaPertence;
@@ -44,6 +51,7 @@ public class Curriculo : MonoBehaviour
         Curriculos.Add($"Nome: {pessoa.GetNome()} Contato: Telefone: 555-6789 E-mail: {pessoa.GetNome()}@email Endereço: Rua das Árvores, Número 789 Objetivo Profissional: Alcançar excelência como desenvolvedor de software Resumo Profissional: Vasta experiência em desenvolvimento de software e liderança de equipe Formação Acadêmica: Mestrado em Ciência da Computação, Universidade XYZ, Concluído em 2020 Experiência Profissional: Desenvolvedor Sênior em empresa de tecnologia por 6 anos Habilidades: Experiente em linguagens de programação como Java, Python, e Ruby Domínio avançado em arquitetura de software e design de sistemas Excelente habilidade em liderança, comunicação e resolução de problemas Idiomas: Português (nativo), Inglês (fluente) Referências: Fornecidas mediante solicitação");
         CurriculosNota.Add(10);
         #endregion
+        
     }
 
     // Métodos
@@ -59,5 +67,11 @@ public class Curriculo : MonoBehaviour
     {
         return detalhes;
     }
-
+    public string GetCurriculo(){
+        numRandom = random.Next(0,10);
+        return Curriculos[numRandom];
+    }
+    public int GetNota(){
+        return CurriculosNota[numRandom];
+    }
 }

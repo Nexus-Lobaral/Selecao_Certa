@@ -1,12 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
+using System.IO;
 
 public class Jogador
 {
     // Atributos
     protected string nome;
-    protected int status; // total de pontos acumulados, se contratou certo ou não
+    protected int status; // total de pontos acumulados, se contratou certo ou nï¿½o
     protected List<Pessoa> pessoas = new List<Pessoa>();
     protected List<Curriculo> curriculos = new List<Curriculo>();
 
@@ -48,5 +50,11 @@ public class Jogador
     public void SetNome(string nome) 
     { 
         this.nome = nome;
+    }
+    public void LerNomeJogador(){
+        using (StreamReader sr = new StreamReader("NomePlayer.txt")) // localiza e ler o nome do jogador
+        {
+                nome = sr.ReadLine();
+        }
     }
 }
