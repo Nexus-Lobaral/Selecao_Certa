@@ -5,6 +5,7 @@ using TMPro;
 
 public class Dialog : MonoBehaviour
 {
+    // NÃO EXCLUIR ESTE SCRIPT, NÃO ESTOU UTILIZANDO MAS ELE TEM O SISTEMA DE LETRA POR LETRA QUE VOU TENTAR IMPLEMENTAR NESSE OUTRO SCRIPT QUE TEM AS ESCOLHAS
     public TextMeshProUGUI textComp; // Componente de referencia
     public string[] linhas; // Array com varias strings que serão os linhas de dialogos
     public float textVelocidade; // velocidade do texto
