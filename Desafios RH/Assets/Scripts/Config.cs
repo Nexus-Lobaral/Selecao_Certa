@@ -9,10 +9,10 @@ public class Config : MonoBehaviour
 {   
     [SerializeField] private GameObject gameCena;
     [SerializeField] private GameObject pauseCena;
-    public Toggle toggle;
-    string Music = "Music.txt";
+    
     void Start(){
         pauseCena.SetActive(false);
+
     }
     public void Hide(){
         Time.timeScale = 0; 
@@ -25,16 +25,5 @@ public class Config : MonoBehaviour
         Debug.Log("Menu de configurações apareceu");
         gameCena.SetActive(false);
         pauseCena.SetActive(true);
-    }
-    public void MusicOnOff(){
-        if(toggle == true){
-            using(StreamWriter sw = new StreamWriter(Music)){
-                sw.WriteLine(true);
-            }
-        }else{
-            using(StreamWriter sw = new StreamWriter(Music)){
-                sw.WriteLine(false);
-            }
-        }
     }
 }

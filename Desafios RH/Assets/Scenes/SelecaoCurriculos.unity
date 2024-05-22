@@ -1696,6 +1696,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1297641108}
   - component: {fileID: 1297641107}
+  - component: {fileID: 1297641109}
   m_Layer: 0
   m_Name: SettingsScript
   m_TagString: Untagged
@@ -1717,7 +1718,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gameCena: {fileID: 385588068}
   pauseCena: {fileID: 162165448}
-  toggle: {fileID: 571973629}
 --- !u!4 &1297641108
 Transform:
   m_ObjectHideFlags: 0
@@ -1733,6 +1733,19 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1297641109
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1297641106}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cb2fa0a6a0c88624aaeb1b5e676b072a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  toggle: {fileID: 571973629}
 --- !u!1 &1364605727
 GameObject:
   m_ObjectHideFlags: 0
