@@ -19,7 +19,7 @@ public class PersonagemData : MonoBehaviour /* ScriptableObject */
     public void CriarPessoas()
     {
         personagens = new List<GameObject>(10);
-        int index = 0;
+        
         foreach(GameObject personagem in personagens)
         {
             // personagem.AddComponent<jsonFiles[Random.Range(0, 9)]>();

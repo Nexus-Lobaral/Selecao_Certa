@@ -1,4 +1,5 @@
 -> main
+VAR nomePersonagem = ""
 
 === main ===
 Escolha uma fruta:
@@ -10,5 +11,5 @@ Escolha uma fruta:
         -> chosen("laranja")
 
 === chosen(fruta) == 
-voce escolheu {fruta}!
+{nomePersonagem} escolheu {fruta}!
 -> END

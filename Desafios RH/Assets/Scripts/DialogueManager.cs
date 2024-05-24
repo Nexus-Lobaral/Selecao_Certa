@@ -9,15 +9,17 @@ public class DialogueManager : MonoBehaviour
 {
     private static DialogueManager instance;
     [SerializeField] private TextMeshProUGUI dialogueText;
+    [SerializeField] private TextMeshProUGUI nameBoxText;
     private Story currentStory;
     private bool DialogueIsPlaying;
+    [SerializeField] private TextAsset jsonAsset; // somente para teste, quando ter o sistema de criar personagens, não vou anexar o dialogo json por inspector, e sim por script
+    [SerializeField] private GameObject personagemGameObject;
+
 
     [Header("Choices UI")]
     [SerializeField] private GameObject[] choices;
     private TextMeshProUGUI[] choicesText;
-    
-    [SerializeField] private TextAsset jsonAsset; // somente para teste, quando ter o sistema de criar personagens, não vou anexar o dialogo json por inspector, e sim por script
-    
+
     private void Awake()
     {
         if (instance != null)
@@ -42,7 +44,7 @@ public class DialogueManager : MonoBehaviour
             choicesText[index] = choice.GetComponentInChildren<TextMeshProUGUI>();
             index++;
         }
-
+        nameBoxText.text = "Nome Personagem";
         EnterDialogueMode(jsonAsset);
     }
 
@@ -52,17 +54,17 @@ public class DialogueManager : MonoBehaviour
         {
             return;
         }
-        if (currentStory.currentChoices.Count == 0 && Input.GetKeyUp(KeyCode.Space))
+        if(Input.GetKeyUp(KeyCode.Space))
         {
-            ContinueStory();
+            ContinueButton();
         }
         
     }
 
-
     public void EnterDialogueMode(TextAsset inkjson)
     {
         currentStory = new Story(inkjson.text);
+        // currentStory.variablesState["nomePersonagem"] = nomePessoa;
         DialogueIsPlaying = true;
 
         ContinueStory();
@@ -76,17 +78,29 @@ public class DialogueManager : MonoBehaviour
         dialogueText.text = "";
     }
 
+    public void ContinueButton()
+    {
+        if (currentStory.currentChoices.Count == 0)
+        {
+            ContinueStory();
+        }
+
+    }
     public void ContinueStory()
     {
         if (currentStory.canContinue)
         {
-            dialogueText.text = currentStory.Continue();
+            //dialogueText.text = currentStory.Continue();
+            string nextLine = currentStory.Continue();
+            Debug.Log("Próxima linha do diálogo: " + nextLine);
+            dialogueText.text = nextLine;
 
             DisplayChoices();
         }
 
         else
         {
+            Debug.Log("Fim da história.");
             ExitDialogueMode();
         }
     }
@@ -121,6 +135,7 @@ public class DialogueManager : MonoBehaviour
     
     public void MakeChoice(int choiceIndex)
     {
+        Debug.Log("MakeChoice chamado com índice: " + choiceIndex);
         currentStory.ChooseChoiceIndex(choiceIndex);
         ContinueStory();
     }
