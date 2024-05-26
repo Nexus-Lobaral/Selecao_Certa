@@ -10,7 +10,7 @@ public class SistemaDeSeleção : MonoBehaviour
     private static SistemaDeSeleção instance;
     protected GameObject obj;
     protected TextMeshProUGUI text;
-    private Pessoa[] pessoas;
+    public Pessoa[] pessoas;
     public Pessoa pessoaAtual; 
     [SerializeField] private TextAsset[] dialogos;
     [SerializeField] private Sprite[] fotosPessoasMasc;
@@ -63,26 +63,14 @@ public class SistemaDeSeleção : MonoBehaviour
         return instance;
     }
 
-    public void DefinirTextoNome(string texto, GameObject obj)
-    {
-        if (obj != null)
-        {
-            text = obj.GetComponent<TextMeshProUGUI>();
-            text.text = texto;
-        }
-        else
-        {
-            Debug.Log("Nada foi adicionado ao objeto de referencia para os textos");
-        }
-    }
     public void MudarIndiceNext()
     {
         if (indice < 2)
         {
             indice++;
             pessoaAtual = pessoas[indice];
-            displayCurriculo.SetImageCurriculo(pessoaAtual.imagemPessoa);
-            displayCurriculo.SetNamePersonagem(pessoaAtual.GetNome());
+            displayCurriculo.SetImageCurriculo(pessoas[indice].imagemPessoa);
+            displayCurriculo.SetNamePersonagem(pessoas[indice].GetNomeCompleto());
 
         }
     }
@@ -92,8 +80,8 @@ public class SistemaDeSeleção : MonoBehaviour
         {
             indice--;
             pessoaAtual = pessoas[indice];
-            displayCurriculo.SetImageCurriculo(pessoaAtual.imagemPessoa);
-            displayCurriculo.SetNamePersonagem(pessoaAtual.GetNome());
+            displayCurriculo.SetImageCurriculo(pessoas[indice].imagemPessoa);
+            displayCurriculo.SetNamePersonagem(pessoaAtual.GetNomeCompleto());
         }
         
     }

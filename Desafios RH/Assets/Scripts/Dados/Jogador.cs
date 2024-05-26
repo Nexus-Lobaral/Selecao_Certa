@@ -6,8 +6,10 @@ using System.IO;
 
 public class Jogador
 {
+
     // Atributos
-    protected string nome;
+    private static Jogador instance;
+    public string nome = "Jogador";
     protected int status; // total de pontos acumulados, se contratou certo ou n�o
     protected List<Pessoa> pessoas = new List<Pessoa>();
     protected List<Curriculo> curriculos = new List<Curriculo>();
@@ -17,7 +19,10 @@ public class Jogador
     {
         
     }
-
+    public static Jogador GetInstance()
+    {
+        return instance;
+    }
     // Metodos
     public List<Curriculo> GetCurriculos()
     { 

@@ -19,7 +19,7 @@ public class Pessoa
     public string genero;
     private GuacamolJuegos guacamol = new GuacamolJuegos();
     private Curriculo curriculo { get; }
-    private TextAsset dialogo { get; }
+    private TextAsset dialogo;
     
     // Construtor
     public Pessoa(Sprite fotoPessoa, TextAsset dialogoJson)
@@ -45,14 +45,22 @@ public class Pessoa
 
     // Metodos
     
-    public string GetNome()
+    public string GetNomeCompleto()
     {
         return nomeCompleto;
+    }
+    public string GetNome()
+    {
+        return nomePrimeiro;
     }
     public int GetIdade() 
     {
         return idade;
     }
 
+    public TextAsset GetDialogo()
+    {
+        return dialogo;
+    }
 
 }

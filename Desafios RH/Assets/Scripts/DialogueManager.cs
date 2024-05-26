@@ -2,19 +2,22 @@ using Ink.Runtime;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using UnityEditor.SearchService;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class DialogueManager : MonoBehaviour
 {
     private static DialogueManager instance;
-    [SerializeField] private TextMeshProUGUI dialogueText;
-    [SerializeField] private TextMeshProUGUI nameBoxText;
     private Story currentStory;
     private bool DialogueIsPlaying;
+    [SerializeField] private GameObject buttonVoltar;
+    [SerializeField] private TextMeshProUGUI dialogueText;
+    [SerializeField] private TextMeshProUGUI nameBoxText;
     [SerializeField] private TextAsset jsonAsset; // somente para teste, quando ter o sistema de criar personagens, não vou anexar o dialogo json por inspector, e sim por script
-    [SerializeField] private GameObject personagemGameObject;
-
+    [SerializeField] private Image imagePersoangem;
 
     [Header("Choices UI")]
     [SerializeField] private GameObject[] choices;
@@ -37,6 +40,10 @@ public class DialogueManager : MonoBehaviour
     private void Start()
     {
 
+        imagePersoangem.sprite = SistemaDeSeleção.GetInstance().pessoaAtual.imagemPessoa;
+        jsonAsset = SistemaDeSeleção.GetInstance().pessoaAtual.GetDialogo();
+        buttonVoltar.SetActive(false);
+
         choicesText = new TextMeshProUGUI[choices.Length];
         int index = 0;
         foreach (GameObject choice in choices)
@@ -44,7 +51,7 @@ public class DialogueManager : MonoBehaviour
             choicesText[index] = choice.GetComponentInChildren<TextMeshProUGUI>();
             index++;
         }
-        nameBoxText.text = "Nome Personagem";
+        
         EnterDialogueMode(jsonAsset);
     }
 
@@ -52,6 +59,9 @@ public class DialogueManager : MonoBehaviour
     {
         if (!DialogueIsPlaying)
         {
+            dialogueText.text = "Aperte no botão abaixo para voltar ao menu de seleções.";
+            
+            buttonVoltar.SetActive(true);
             return;
         }
         if(Input.GetKeyUp(KeyCode.Space))
@@ -59,13 +69,20 @@ public class DialogueManager : MonoBehaviour
             ContinueButton();
         }
         
+        
     }
 
+    public void VoltarSelecaoCurriculo()
+    {
+        
+        SceneManager.LoadScene("SelecaoCurriculos");
+    }
     public void EnterDialogueMode(TextAsset inkjson)
     {
         currentStory = new Story(inkjson.text);
-        // currentStory.variablesState["nomePersonagem"] = nomePessoa;
         DialogueIsPlaying = true;
+        currentStory.variablesState["nomePersonagem"] = SistemaDeSeleção.GetInstance().pessoaAtual.GetNome();
+        currentStory.variablesState["nomeJogador"] = "(Nome do Jogador)";
 
         ContinueStory();
     }
@@ -80,10 +97,14 @@ public class DialogueManager : MonoBehaviour
 
     public void ContinueButton()
     {
-        if (currentStory.currentChoices.Count == 0)
+        if (DialogueIsPlaying)
         {
-            ContinueStory();
+            if (currentStory.currentChoices.Count == 0)
+            {
+                ContinueStory();
+            }
         }
+
 
     }
     public void ContinueStory()
@@ -94,6 +115,17 @@ public class DialogueManager : MonoBehaviour
             string nextLine = currentStory.Continue();
             Debug.Log("Próxima linha do diálogo: " + nextLine);
             dialogueText.text = nextLine;
+            
+
+            int vez = (int)currentStory.variablesState["vez"];
+            if (vez == 1)
+            {
+                nameBoxText.text = SistemaDeSeleção.GetInstance().pessoaAtual.GetNome();
+            }
+            if (vez == 0)
+            {
+                nameBoxText.text = "Jogador";
+            }
 
             DisplayChoices();
         }

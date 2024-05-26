@@ -19,7 +19,7 @@ public class DisplayCurriculo : MonoBehaviour
             imageCurriculo.sprite = SistemaDeSeleção.GetInstance().pessoaAtual.imagemPessoa;
         }
 
-        namePersonagem.text = SistemaDeSeleção.GetInstance().pessoaAtual.GetNome();
+        namePersonagem.text = SistemaDeSeleção.GetInstance().pessoaAtual.GetNomeCompleto();
     }
     private void Update()
     {

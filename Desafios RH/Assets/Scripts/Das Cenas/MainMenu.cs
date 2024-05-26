@@ -18,7 +18,8 @@ public class MainMenu : MonoBehaviour
     public Button button;
     private string origem = "NomePlayer.txt";
     private string destino = "NomePlayer.txt";
-    void Start(){
+
+    private void Start(){
         Time.timeScale = 0; 
         Debug.Log("Menu de Nome saiu");
         gameCena.SetActive(true);
