@@ -2,41 +2,65 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
-using System;
 using System.IO;
+using UnityEngine.UI;
 
 public class SistemaDeSeleção : MonoBehaviour
 {
+    private static SistemaDeSeleção instance;
     protected GameObject obj;
-    protected GameObject obj2;
-    protected GameObject obj3;
     protected TextMeshProUGUI text;
-    private Pessoa pessoa1;
-    private Pessoa pessoa2;
-    private Pessoa pessoa3;
+    private Pessoa[] pessoas;
+    public Pessoa pessoaAtual; 
+    [SerializeField] private TextAsset[] dialogos;
+    [SerializeField] private Sprite[] fotosPessoasMasc;
+    [SerializeField] private Sprite[] fotosPessoasFem;
+    public int indice;
+    [SerializeField] private DisplayCurriculo displayCurriculo;
 
-    void Start()
-    {   
-        //pessoa 1
-        obj = GameObject.FindGameObjectWithTag("Texto");
-        pessoa1 = new Pessoa();
-        DefinirTextoNome(pessoa1.GetNome(),obj);
+    private void Awake()
+    {
+        // displayCurriculo = GetComponent<DisplayCurriculo>();
+        if (instance != null)
+        {
+            Debug.Log("Tem mais de um sistema de seleção na cena");
+        }
+        DontDestroyOnLoad(this);
+        instance = this;
+        
+        pessoas = new Pessoa[3];
+        if (dialogos != null && fotosPessoasMasc != null && fotosPessoasFem != null)
+        {
 
-        //pessoa 2 
-        obj2 = GameObject.FindGameObjectWithTag("Texto");
-        pessoa2 = new Pessoa();
-        DefinirTextoNome(pessoa2.GetNome(),obj2);
+            for (int i = 0; i < pessoas.Length; i++)
+            {
+                var dialogoAleatorio = dialogos[Random.Range(0, dialogos.Length)];
+                pessoas[i] = new Pessoa(fotosPessoasMasc[i], dialogoAleatorio);
 
-        // pessoa 3
-        obj3 = GameObject.FindGameObjectWithTag("Texto");
-        pessoa3 = new Pessoa();
-        DefinirTextoNome(pessoa3.GetNome(),obj3);
+               if (pessoas[i].genero == "feminino")
+               {
+                    pessoas[i].imagemPessoa = fotosPessoasFem[i];
+               }
+            }
+        }
+        else
+        {
+            Debug.Log("Erro por falta de TextAssets ou imagens suficientes para cada pessoa");
+        }
+        indice = 0;
+        pessoaAtual = pessoas[indice];
+    }
+    private void Start()
+    {
+        
+        
+
     }
 
 
-    void Update()
+    public static SistemaDeSeleção GetInstance()
     {
-        
+        return instance;
     }
 
     public void DefinirTextoNome(string texto, GameObject obj)
@@ -51,5 +75,29 @@ public class SistemaDeSeleção : MonoBehaviour
             Debug.Log("Nada foi adicionado ao objeto de referencia para os textos");
         }
     }
+    public void MudarIndiceNext()
+    {
+        if (indice < 2)
+        {
+            indice++;
+            pessoaAtual = pessoas[indice];
+            displayCurriculo.SetImageCurriculo(pessoaAtual.imagemPessoa);
+            displayCurriculo.SetNamePersonagem(pessoaAtual.GetNome());
+
+        }
+    }
+    public void MudarIndicePrevious()
+    {
+        if (  indice > 0)
+        {
+            indice--;
+            pessoaAtual = pessoas[indice];
+            displayCurriculo.SetImageCurriculo(pessoaAtual.imagemPessoa);
+            displayCurriculo.SetNamePersonagem(pessoaAtual.GetNome());
+        }
+        
+    }
+
+
 
 }

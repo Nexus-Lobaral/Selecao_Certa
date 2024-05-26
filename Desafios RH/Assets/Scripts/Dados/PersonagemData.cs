@@ -12,19 +12,10 @@ public class PersonagemData : MonoBehaviour /* ScriptableObject */
 
     private void Start()
     {
-        CriarPessoas();
-    }
-    
-    
-    public void CriarPessoas()
-    {
-        personagens = new List<GameObject>(10);
         
-        foreach(GameObject personagem in personagens)
-        {
-            // personagem.AddComponent<jsonFiles[Random.Range(0, 9)]>();
-        }
     }
+    
+    
 
     // Talvez esse sera o script de criar personagens
 

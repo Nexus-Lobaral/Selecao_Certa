@@ -1,11 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditorInternal;
 using UnityEngine;
 
 public class GuacamolJuegos : Empresas // Empresa de jogos que herda da classe de empresa
 {
     // Atributos
-    
+    private static GuacamolJuegos instance;
     
     
     
@@ -19,6 +20,11 @@ public class GuacamolJuegos : Empresas // Empresa de jogos que herda da classe d
     }
 
     // Metodos
+    public static GuacamolJuegos GetInstance()
+    {
+        return instance;
+    }
+
     public override string GetDescricao() // Metodo para retornar a variavel de descri��o
     {
         return descricao;

@@ -9,7 +9,7 @@ using UnityEditor.Build.Pipeline;
 using System.Reflection;
 using Unity.Properties;
 
-public class Curriculo : MonoBehaviour
+public class Curriculo
 {   
     // Atributos
     private System.Random random = new System.Random();
@@ -20,15 +20,16 @@ public class Curriculo : MonoBehaviour
     protected Pessoa pessoa;
     protected List<string> Curriculos = new List<string>();
     protected List<int> CurriculosNota = new List<int>();
+    private int idade { get; }
+    private string nome { get; }
 
     // Construtor
     public Curriculo(Empresas empresaPertence, Pessoa pessoa)
     {
-        
         this.pessoa = pessoa;
         detalhes = ""; // Colocar tipos de detalhes da pessoa gerados aleatoriamente
         empresa = empresaPertence;
-        cargo = empresa.GetCargo(); // Nome do cargo
+        cargo = empresaPertence.GetCargo(); // Nome do cargo
         #region 
         Curriculos.Add($"Nome: {pessoa.GetNome()} /nContato: - Telefone: 99 - E-mail: {pessoa.GetNome()}gmail - Endereço: Rua sem nome /nObjetivo Profissional: Obter um emprego /nResumo Profissional: Alguma experiência em várias coisas /nFormação Acadêmica: Escola, não lembro o nome /nExperiência Profissional: Trabalhei em alguns lugares /nHabilidades: Algumas habilidades básicas /nIdiomas: Português (básico) /nReferências: Sobrenome (não lembro)");
         CurriculosNota.Add(1);
@@ -55,10 +56,6 @@ public class Curriculo : MonoBehaviour
     }
 
     // Métodos
-    public string GetNomePessoa()
-    {
-        return pessoa.GetNome();
-    }
     public string GetCargo()
     {
         return cargo;
