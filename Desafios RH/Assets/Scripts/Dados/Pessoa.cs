@@ -24,17 +24,7 @@ public class Pessoa
     // Construtor
     public Pessoa(Sprite fotoPessoa, TextAsset dialogoJson)
     {
-        int i = Random.Range(0, 2);
-        if (i == 0)
-        {
-            genero = "masculino";
-            nomePrimeiro = listaNomesMasc[Random.Range(0, listaNomesMasc.Count)];
-        }
-        else
-        {
-            genero = "feminino";
-            nomePrimeiro = listaNomesFem[Random.Range(0, listaNomesFem.Count)];
-        }
+        nomePrimeiro = listaNomesFem[Random.Range(0, listaNomesFem.Count)];
         nomeCompleto = nomePrimeiro + " " + listaSobrenomes[Random.Range(0, listaSobrenomes.Count)];
         idade = Random.Range(18, 31);
         curriculo = new Curriculo(guacamol, this);

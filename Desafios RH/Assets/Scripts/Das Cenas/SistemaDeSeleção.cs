@@ -13,9 +13,9 @@ public class SistemaDeSeleção : MonoBehaviour
     public Pessoa[] pessoas;
     public Pessoa pessoaAtual; 
     [SerializeField] private TextAsset[] dialogos;
-    [SerializeField] private Sprite[] fotosPessoasMasc;
     [SerializeField] private Sprite[] fotosPessoasFem;
     public int indice;
+    
     [SerializeField] private DisplayCurriculo displayCurriculo;
 
     private void Awake()
@@ -28,19 +28,13 @@ public class SistemaDeSeleção : MonoBehaviour
         DontDestroyOnLoad(this);
         instance = this;
         
-        pessoas = new Pessoa[3];
-        if (dialogos != null && fotosPessoasMasc != null && fotosPessoasFem != null)
+        pessoas = new Pessoa[6];
+        if (dialogos != null && fotosPessoasFem != null)
         {
 
             for (int i = 0; i < pessoas.Length; i++)
             {
-                var dialogoAleatorio = dialogos[Random.Range(0, dialogos.Length)];
-                pessoas[i] = new Pessoa(fotosPessoasMasc[i], dialogoAleatorio);
-
-               if (pessoas[i].genero == "feminino")
-               {
-                    pessoas[i].imagemPessoa = fotosPessoasFem[i];
-               }
+                pessoas[i] = new Pessoa(fotosPessoasFem[Random.Range(0, fotosPessoasFem.Length)], dialogos[i]);
             }
         }
         else
@@ -65,7 +59,7 @@ public class SistemaDeSeleção : MonoBehaviour
 
     public void MudarIndiceNext()
     {
-        if (indice < 2)
+        if (indice < (pessoas.Length - 1))
         {
             indice++;
             pessoaAtual = pessoas[indice];

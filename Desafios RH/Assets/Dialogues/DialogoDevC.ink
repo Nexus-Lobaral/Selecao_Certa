@@ -17,15 +17,15 @@ Eu escolhi esta empresa justamente porque ela trabalha com o tipo de jogo que eu
 === escolhas1 ===
 ~ vez = 0
 Escolha uma opção:
-    * [Voce tem repertorio sobre a cultura Mexicana? (Questionar conhecimento)]
+    * [Voce tem repertorio sobre a cultura Mexicana?]
         Você errou a resposta pois esta opção muda de assunto muito rapidamente.
         ~ qntErros -= 1
         -> escolhas1
         
-    * [Hum, interessante. Mas você escolheu somente por causa disso ou tem mais algum outro interesse? (Continuar a conversa normalmente)]// CERTA RESPOSTA
+    * [Hum, interessante. Mas você escolheu somente por causa disso ou tem mais algum outro interesse?]// CERTA RESPOSTA
         Muito bem, certa resposta!!!
         -> main2
-    * [Qual é esse tipo de jogo que você se refere? (Questionar sobre o tipo de jogo)]
+    * [Qual é esse tipo de jogo que você se refere?]
         Você errou a resposta pois o entrevistador ja deveria saber qual é o tipo de jogo mencionado.
         ~ qntErros -= 1
         -> escolhas1
@@ -40,14 +40,14 @@ Sim, eu vejo bastante potencial e sinto que vou me estabelecer bem nesta empresa
 === escolhas2 ===
 ~ vez = 0
 Escolha uma opção:
-    * [Certo. Você tem algum problema com comunicação em equipe? Precisamos ser bem comunicativos para alcançar o objetivo! (Mudar de assunto)]// CERTA RESPOSTA
+    * [Certo. Você tem algum problema com comunicação em equipe? Precisamos ser bem comunicativos para alcançar o objetivo!]// CERTA RESPOSTA
         Muito bem, certa resposta!!!
         -> main3
-    * [Você cursou alguma faculdade de Tecnologia? (questionar onde cursou)]
+    * [Você cursou alguma faculdade de Tecnologia?]
         Errado pois isso ja deve esta escrito no curriculo.
         ~ qntErros -= 1
         -> escolhas2
-    * [Beleza então. Qual sua cor favorita? (Mudar completamente de assunto)]
+    * [Beleza então. Qual sua cor favorita?]
         Preciso falar o porquê essa esta errada?
         ~ qntErros -= 1
         -> escolhas2
