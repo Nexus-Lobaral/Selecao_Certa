@@ -8,11 +8,15 @@ public class MusicOnOff : MonoBehaviour
 {
     public Toggle toggle;
     string Music = "Music.txt";
+    public AudioSource audio;
     bool sws;
+    public Slider controleVolume;
     // Start is called before the first frame update
     void Start()
     {
         toggle.GetComponent<Toggle>();
+        audio.GetComponent<AudioSource>();
+        controleVolume.GetComponent<Slider>();
     }
 
     // Update is called once per frame
@@ -21,6 +25,7 @@ public class MusicOnOff : MonoBehaviour
     }
 
     public void OnOff(){
+        audio.volume = controleVolume.value;
         if (sws != toggle.isOn){
             if(toggle.isOn == true){
                 using(StreamWriter sw = new StreamWriter(Music)){
@@ -35,6 +40,11 @@ public class MusicOnOff : MonoBehaviour
                 Debug.Log("desligado");
                 sws = false;
             }
+        }
+        if(!sws == true){
+            audio.mute = true;
+        } else{
+            audio.mute = false;
         }
     }
 }
