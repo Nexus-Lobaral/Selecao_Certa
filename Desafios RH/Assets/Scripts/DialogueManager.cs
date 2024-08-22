@@ -1,6 +1,7 @@
 using Ink.Runtime;
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using TMPro;
 using UnityEditor.SearchService;
 using UnityEngine;
@@ -16,7 +17,7 @@ public class DialogueManager : MonoBehaviour
     [SerializeField] private GameObject buttonVoltar;
     [SerializeField] private TextMeshProUGUI dialogueText;
     [SerializeField] private TextMeshProUGUI nameBoxText;
-    [SerializeField] private TextAsset jsonAsset; // somente para teste, quando ter o sistema de criar personagens, não vou anexar o dialogo json por inspector, e sim por script
+    [SerializeField] private TextAsset jsonAsset; // somente para teste, quando ter o sistema de criar personagens, nÃ£o vou anexar o dialogo json por inspector, e sim por script
     [SerializeField] private Image imagePersoangem;
 
     [Header("Choices UI")]
@@ -27,7 +28,7 @@ public class DialogueManager : MonoBehaviour
     {
         if (instance != null)
         {
-            Debug.LogWarning("tem mais de um dialogue manager na cena"); // somente para teste, quando ter o sistema de criar personagens, não vou anexar o dialogo json por inspector, e sim por script
+            Debug.LogWarning("tem mais de um dialogue manager na cena"); // somente para teste, quando ter o sistema de criar personagens, nao vou anexar o dialogo json por inspector, e sim por script
         }
         instance = this;
     }
@@ -40,8 +41,8 @@ public class DialogueManager : MonoBehaviour
     private void Start()
     {
 
-        imagePersoangem.sprite = SistemaDeSeleção.GetInstance().pessoaAtual.imagemPessoa;
-        jsonAsset = SistemaDeSeleção.GetInstance().pessoaAtual.GetDialogo();
+        imagePersoangem.sprite = SistemaDeSelecao.GetInstance().pessoaAtual.imagemPessoa;
+        jsonAsset = SistemaDeSelecao.GetInstance().pessoaAtual.GetDialogo();
         buttonVoltar.SetActive(false);
 
         choicesText = new TextMeshProUGUI[choices.Length];
@@ -59,7 +60,7 @@ public class DialogueManager : MonoBehaviour
     {
         if (!DialogueIsPlaying)
         {
-            dialogueText.text = "Aperte no botão abaixo para voltar ao menu de seleções.";
+            dialogueText.text = "Aperte no botao abaixo para voltar ao menu de selecoes.";
             
             buttonVoltar.SetActive(true);
             return;
@@ -76,18 +77,19 @@ public class DialogueManager : MonoBehaviour
     {
         
         SceneManager.LoadScene("SelecaoCurriculos");
+        
     }
     public void EnterDialogueMode(TextAsset inkjson)
     {
         currentStory = new Story(inkjson.text);
         DialogueIsPlaying = true;
-        currentStory.variablesState["nomePersonagem"] = SistemaDeSeleção.GetInstance().pessoaAtual.GetNome();
+        currentStory.variablesState["nomePersonagem"] = SistemaDeSelecao.GetInstance().pessoaAtual.GetNome();
         currentStory.variablesState["nomeJogador"] = "(Nome do Jogador)";
 
         ContinueStory();
     }
 
-    // posso deixar IEnumerator neste metodo para adicionar um leve delay no fim do dialogo para ocorrer alguma animação...
+    // posso deixar IEnumerator neste metodo para adicionar um leve delay no fim do dialogo para ocorrer alguma animaï¿½ï¿½o...
     private void ExitDialogueMode()
     {
 
@@ -113,18 +115,18 @@ public class DialogueManager : MonoBehaviour
         {
             //dialogueText.text = currentStory.Continue();
             string nextLine = currentStory.Continue();
-            Debug.Log("Próxima linha do diálogo: " + nextLine);
+            Debug.Log("Proxima linha do dialogo: " + nextLine);
             dialogueText.text = nextLine;
             
 
             int vez = (int)currentStory.variablesState["vez"];
             if (vez == 1)
             {
-                nameBoxText.text = SistemaDeSeleção.GetInstance().pessoaAtual.GetNome();
+                nameBoxText.text = SistemaDeSelecao.GetInstance().pessoaAtual.GetNome();
             }
             if (vez == 0)
             {
-                nameBoxText.text = "Jogador";
+                nameBoxText.text = File.ReadAllText("NomePlayer.txt");
             }
 
             DisplayChoices();
@@ -132,7 +134,7 @@ public class DialogueManager : MonoBehaviour
 
         else
         {
-            Debug.Log("Fim da história.");
+            Debug.Log("Fim da historia.");
             ExitDialogueMode();
         }
     }
@@ -141,7 +143,7 @@ public class DialogueManager : MonoBehaviour
     {
         List<Choice> currentChoices = currentStory.currentChoices;
 
-        // checagem de precaução para que se o numero de escolhas for diferente do numero de de objetos de escolha
+        // checagem de precaucao para que se o numero de escolhas for diferente do numero de de objetos de escolha
         if (currentChoices.Count > choices.Length)
         {
             Debug.LogError("Falta mais escolhas para que a UI fique completa, numero de escolhas abaixo do esperado. Numero de escolhas dadas: "
@@ -156,7 +158,7 @@ public class DialogueManager : MonoBehaviour
             choicesText[index].text = choice.text;
             index++;
         }
-        // analise as opções restantes que a IU suporta e certifique-se de que estejam ocultas
+        // analise as opcoes restantes que a IU suporta e certifique-se de que estejam ocultas
         for (int i = index; i < choices.Length; i++)
         {
             choices[i].gameObject.SetActive(false);
@@ -167,12 +169,12 @@ public class DialogueManager : MonoBehaviour
     
     public void MakeChoice(int choiceIndex)
     {
-        Debug.Log("MakeChoice chamado com índice: " + choiceIndex);
+        Debug.Log("MakeChoice chamado com indice: " + choiceIndex);
         currentStory.ChooseChoiceIndex(choiceIndex);
         ContinueStory();
     }
 
-    /* isto é para caso algum dia eu quero que o menu seja utilizado com teclas do teclado tambem
+    /* isto ï¿½ para caso algum dia eu quero que o menu seja utilizado com teclas do teclado tambem
     private IEnumerator SelectFirstChoice()
     {
         EventSystem.current.SetSelectedGameObject(null);

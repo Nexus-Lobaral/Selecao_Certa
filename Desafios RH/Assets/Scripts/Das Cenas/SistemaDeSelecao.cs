@@ -5,9 +5,9 @@ using TMPro;
 using System.IO;
 using UnityEngine.UI;
 
-public class SistemaDeSeleção : MonoBehaviour
+public class SistemaDeSelecao : MonoBehaviour
 {
-    private static SistemaDeSeleção instance;
+private static SistemaDeSelecao instance;
     protected GameObject obj;
     protected TextMeshProUGUI text;
     public Pessoa[] pessoas;
@@ -52,7 +52,7 @@ public class SistemaDeSeleção : MonoBehaviour
     }
 
 
-    public static SistemaDeSeleção GetInstance()
+    public static SistemaDeSelecao GetInstance()
     {
         return instance;
     }
@@ -79,7 +79,12 @@ public class SistemaDeSeleção : MonoBehaviour
         }
         
     }
-
-
+    /*
+    public void apagarPessoa()
+    {
+        pessoas[indice].rem
+    }
+    */
 
 }
+
