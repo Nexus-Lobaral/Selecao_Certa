@@ -2,7 +2,6 @@
 VAR nomePersonagem = ""
 VAR nomeJogador = ""
 VAR vez = 0 // se for 0 é o jogador, se for 1 é o personagem
-VAR contratado = 0 // 1 igual a contratado e 0 igual a rejeitado
 VAR qntErros = 2
 === main ===
 ~ vez = 0
@@ -17,33 +16,33 @@ Ah, sim, sim, pode.
 === escolhas1 ===
 ~ vez = 0
 Escolha uma opção:
-    * [Como é sua comunicação com pessoas?]
+    * [Como é sua comunicação com pessoas?] //CERTA RESPOSTA
         Muito bem, certa resposta!!!
         -> main2
-    * [Você tem algum problema!?]// CERTA RESPOSTA
+    * [Você tem algum problema!?]
         O jeito de sua fala é muito importante na hora de fazer perguntas
         ~ qntErros -= 1
         -> escolhas1
     * [Não precisa ficar nervoso]
-        Ele não parece nervoso, apenas distraído
+        Ela não parece nervoso, apenas distraído
         ~ qntErros -= 1
         -> escolhas1
 === main2 ===
 ~ vez = 1
-Ah, eu sou bem comunicativo, mas, como pode ver, sou muito distraído.
+Ah, eu sou bem comunicativa, mas, como pode ver, sou muito distraída.
 -> escolhas2
 === escolhas2 ===
 ~ vez = 0
 Escolha uma opção:
-    * [O quanto distraído você é?]
-        Ele já falou que é muito distraído... e parece que você também
+    * [O quanto distraída você é?]
+        Ela já falou que é muito distraída... e parece que você também
         ~ qntErros -= 1
         -> escolhas2
     * [Você sabe se é uma condição tipo déficit ou algo do gênero?]
         Muito bem, certa resposta!!!
         -> main3
     * [Que coisa, não?]
-        Pergunte algo que gere mais informações, para entender o tipo de pessoa que ele é
+        Pergunte algo que gere mais informações, para entender o tipo de pessoa que ela é
         ~ qntErros -= 1
         -> escolhas2
 === main3 ===
@@ -58,7 +57,7 @@ Escolha uma opção:
         Certa Resposta!
         -> main4
     * [Você poderia ter falado isso antes.]
-        Não, ele não podia, pois é algo em descobrimento com certas dúvidas
+        Não, ela não podia, pois é algo em descobrimento com certas dúvidas
         ~ qntErros -= 1
         -> escolhas3
     * [Mas no momento, qual tipo de transtorno você acha que tem?]
@@ -69,13 +68,7 @@ Escolha uma opção:
 ~ vez = 1
 B-bom, eu nunca tive um problema desses. (Voz trêmula)
 ~ vez = 0
-(Pensamento: Ele pareceu muito nervoso com essa pergunta...)
-Entendi, vou analisar aqui e ja te dou a resposta se vamos te contratar.
-    * [Contratar]
-        ~ contratado = 1
-        Parabens, Acabei de decidir que vamos te contratar
-    * [Rejeitar]
-        ~ contratado = 0
-        Infelizmente vou te rejeitar, tente na proxima
+(Pensamento: Ela pareceu muito nervosa com essa pergunta...)
+Entendi, vou te ligar se tivermos notícias
 
     - -> END // DE qualquer forma ele termina o dialogo

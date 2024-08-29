@@ -2,7 +2,6 @@
 VAR nomePersonagem = ""
 VAR nomeJogador = ""
 VAR vez = 0 // se for 0 é o jogador, se for 1 é o personagem
-VAR contratado = 0 // 1 igual a contratado e 0 igual a rejeitado
 VAR qntErros = 2
 === main ===
 ~ vez = 0
@@ -22,11 +21,11 @@ Escolha uma opção:
         ~ qntErros -= 1
         -> escolhas1
         
-    * [Hum, interessante. Mas você escolheu somente por causa disso ou tem mais algum outro interesse?]// CERTA RESPOSTA
+    * [Hum, interessante. Mas você escolheu somente por causa disso ou tem mais algum outro interesse?] // CERTA RESPOSTA
         Muito bem, certa resposta!!!
         -> main2
     * [Qual é esse tipo de jogo que você se refere?]
-        Você errou a resposta pois o entrevistador ja deveria saber qual é o tipo de jogo mencionado.
+        Você meio que já devia saber o tipo de jogo que sua empressa irá desenvolver
         ~ qntErros -= 1
         -> escolhas1
 === main2 ===
@@ -40,7 +39,7 @@ Sim, eu vejo bastante potencial e sinto que vou me estabelecer bem nesta empresa
 === escolhas2 ===
 ~ vez = 0
 Escolha uma opção:
-    * [Certo. Você tem algum problema com comunicação em equipe? Precisamos ser bem comunicativos para alcançar o objetivo!]// CERTA RESPOSTA
+    * [Certo. Você tem algum problema com comunicação em equipe?] // CERTA RESPOSTA
         Muito bem, certa resposta!!!
         -> main3
     * [Você cursou alguma faculdade de Tecnologia?]
@@ -55,13 +54,7 @@ Escolha uma opção:
 ~ vez = 1
 Eu consigo falar sobre o projeto sem ter qualquer tipo de medo ou ansiedade, mas somente de forma profissional.
 ~ vez = 0
-Muito bem, espere um instante, irei decidir o seu caso.
-Escolha uma opção:
-    * [Contratar]
-        ~ contratado = 1
-        Parabens, Acabei de decidir que vamos te contratar
-    * [Rejeitar]
-        ~ contratado = 0
-        Infelizmente vou te rejeitar, tente na proxima
+Certo....Bom encerramos por aqui se tivermos mensagens lhe enviaremos
+
 
     - -> END // DE qualquer forma ele termina o dialogo

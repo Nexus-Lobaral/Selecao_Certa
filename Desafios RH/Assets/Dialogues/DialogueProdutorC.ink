@@ -1,7 +1,6 @@
 VAR nomePersonagem = ""
 VAR nomeJogador = ""
 VAR vez = 0 // se for 0 é o jogador, se for 1 é o personagem
-VAR contratado = 0 // 1 igual a contratado e 0 igual a rejeitado
 VAR qntErros = 2
 -> main
 === main ===
@@ -21,7 +20,7 @@ Escolha uma opção:
         Certa resposta!
         -> main2
     * [É sua primeira vez em uma entrevista?]
-        O cara já teve um emprego, então acho que nunca teve, né?
+        Ela já teve um emprego, então acho que nunca teve, né?
         ~ qntErros -= 1
         -> escolhas1
 === main2 ===
@@ -30,27 +29,27 @@ Bom, era uma oportunidade, já que eu queria sair da minha empresa antiga.
 ~ vez = 0
 Então você apenas queria sair da sua antiga empresa?
 ~ vez = 1
-Não é só por causa disso, mas sim.
+Não só por causa disso, mas sim.
 -> escolhas2
 === escolhas2 ===
 ~ vez = 0
 Escolha uma opção:
-    * [Teve a ver com seu trabalho?]
+    * [Aconteceu algo nesse trabalho?] // CERTA RESPOSTA
         Otimo, Certa Resposta!
         -> main3
     * [Qual era a empresa?]
-        Você tem que se focar na sua, não na dos outros
+        Já está no curriculo
         ~ qntErros -= 1
         -> escolhas2
-    * [Isso afetará no seu desempenho?]
+    * [Isso afeta algo no seu desempenho?]
         Que isso, cara, a gente esconde quando não se importa
         ~ qntErros -= 1
         -> escolhas2
 === main3 ===
 ~ vez = 1
-Tecnicamente não, porque eles eram muito desorganizados e nada focados.
+Bom eles eram muito desorganizados e nada focados, então isso me fez sair.
 ~ vez = 0
-Então você apenas se incomodou com o jeito deles. Entendo.
+Então você se incomodou com o descomprometimento deles. Entendo.
 -> escolhas3
 === escolhas3 ===
 Escolha uma opção:
@@ -59,7 +58,7 @@ Escolha uma opção:
         ~ qntErros -= 1
         -> escolhas3
     * [Deve ter sido complicado, mas a nossa é bem organizada.]
-        Você não sabe se vai ser, então se tá mentindo... e mentir é para político
+        Você não sabe se vai ser, então você está mentindo... e mentir é para político
         ~ qntErros -= 1
         -> escolhas3
     * [Como que você trabalha?]
@@ -68,15 +67,9 @@ Escolha uma opção:
         
 === main4 ===
 ~ vez = 1
-Bom, eu tento deixar tudo o mais organizado possível e sou bem calmo, porém sou rígido e bravo sempre que for necessário.
+Bom, eu tento deixar tudo o mais organizado possível e sou bem calma, porém sou rígida e bem estressada sempre que for necessário.
 ~ vez = 0
-Muito bem, espere um instante, irei decidir o seu caso.
-Escolha uma opção:
-    * [Contratar]
-        ~ contratado = 1
-        Parabens, Acabei de decidir que vamos te contratar
-    * [Rejeitar]
-        ~ contratado = 0
-        Infelizmente vou te rejeitar, tente na proxima
+Muito bem, acho que encerramos por aqui é se tivermos boas novas lhe informaremos.
+
 
     - -> END // DE qualquer forma ele termina o dialogo

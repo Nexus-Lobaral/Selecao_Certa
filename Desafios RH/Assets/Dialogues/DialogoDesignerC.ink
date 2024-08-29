@@ -17,7 +17,7 @@ Escolha uma opção:
         Certa resposta!
         -> main2
     * [Que tipo de trabalho você faz? ]
-        Ele literalmente quer uma vaga no ramo de designer...acho que é apicultor
+        Ela literalmente quer uma vaga no ramo de designer...acho que é apicultor
         ~ qntErros -= 1
         -> escolhas1
     * [Alguma experiencia em empresas ou e sua primeira vez?]
@@ -40,7 +40,7 @@ Escolha uma opção:
         Otimo, Certa Resposta!
         -> main3
     * [Se sente bem fazendo o seu tipo de design?]
-        O entrevistado já mostrou querer fazer outros tipos de design
+        A entrevistada já mostrou querer fazer outros tipos de design
         ~ qntErros -= 1
         -> escolhas2
 === main3 ===
@@ -64,15 +64,8 @@ Escolha uma opção:
         
 === main4 ===
 ~ vez = 1
-Até que foi facil é como eu quero trabalha presencialmente para vocês fica até mais facil.
+Até que foi facil e como eu planejo trabalhar presencialmente para vocês fica até mais facil.
 ~ vez = 0
-Muito bem, espere um instante, irei decidir o seu caso.
-Escolha uma opção:
-    * [Contratar]
-        ~ contratado = 1
-        Parabens, Acabei de decidir que vamos te contratar
-    * [Rejeitar]
-        ~ contratado = 0
-        Infelizmente vou te rejeitar, tente na proxima
+Muito bem, encerramos por aqui. Mandaremos mensagem se tivermos boas novas.
 
     - -> END // DE qualquer forma ele termina o dialogo

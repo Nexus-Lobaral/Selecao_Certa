@@ -2695,8 +2695,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: "SistemaDeSele\xE7\xE3o, Assembly-CSharp"
+      - m_Target: {fileID: 594150224}
+        m_TargetAssemblyTypeName: SistemaDeSelecao, Assembly-CSharp
         m_MethodName: MudarIndiceNext
         m_Mode: 1
         m_Arguments:
@@ -2982,8 +2982,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: "SistemaDeSele\xE7\xE3o, Assembly-CSharp"
+      - m_Target: {fileID: 594150224}
+        m_TargetAssemblyTypeName: SistemaDeSelecao, Assembly-CSharp
         m_MethodName: MudarIndicePrevious
         m_Mode: 1
         m_Arguments:
