@@ -34,8 +34,8 @@ Não só por causa disso, mas sim.
 === escolhas2 ===
 ~ vez = 0
 Escolha uma opção:
-    * [Aconteceu algo nesse trabalho?] // CERTA RESPOSTA
-        Otimo, Certa Resposta!
+    * [Aconteceu algo nesse trabalho?]
+        Certa Resposta!
         -> main3
     * [Qual era a empresa?]
         Já está no curriculo
